@@ -14,8 +14,8 @@ export default class extends React.Component {
     };
     getLocation = async() => {
     
-      try {
-        
+      try {      
+        console.log(latitude, longitude);  
         await Location.getPermissionsAsync();
 
         const {
@@ -42,8 +42,8 @@ export default class extends React.Component {
     }
 
     render(){
-      const {latitude, longitude} = this.state;
-      return <Navigator latitude={latitude} longitude={longitude} />
+      const {isLoading,latitude, longitude} = this.state;
+      return <Navigator latitude={37.49002} longitude={126.93390} />
     }
 }
 

@@ -24,11 +24,16 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "config": { "googleMaps": { "apiKey": "AIzaSyDxe4EVddBe4C33bUId3VZs5r5SUFIntRk" } }
-
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDxe4EVddBe4C33bUId3VZs5r5SUFIntRk"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "네비게이션",
+    "githubUrl": "https://github.com/gaaaa1/Navigator"
   }
 }
