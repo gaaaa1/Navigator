@@ -5,6 +5,7 @@ import react from 'react';
 import Navigator from './Navigator';
 import * as Location from "expo-location";
 import { Alert } from "react-native";
+import Loading from './Loading';
 
 
 export default class extends React.Component {
@@ -12,11 +13,11 @@ export default class extends React.Component {
     state={
       isLoading: true
     };
+
     getLocation = async() => {
     
       try {      
-        console.log(latitude, longitude);  
-        await Location.getPermissionsAsync();
+        await Location.requestPermissionsAsync();
 
         const {
           coords:{latitude,longitude}
@@ -36,14 +37,9 @@ export default class extends React.Component {
       this.getLocation();
     }
 
-    shouldComponentUpdate(){
-      console.log("ShouldMount");
-      this.getLocation();
-    }
-
     render(){
-      const {isLoading,latitude, longitude} = this.state;
-      return <Navigator latitude={37.49002} longitude={126.93390} />
+      const {isLoading, latitude, longitude} = this.state;
+      return isLoading ? <Loading/> : <Navigator latitude={latitude} longitude={longitude} />
     }
 }
 
