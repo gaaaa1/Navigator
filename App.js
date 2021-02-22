@@ -9,8 +9,9 @@ import { Alert } from "react-native";
 
 export default class extends React.Component {
 
-
-
+    state={
+      isLoading: true
+    };
     getLocation = async() => {
     
       try {
@@ -23,7 +24,7 @@ export default class extends React.Component {
         
         console.log(latitude, longitude);
 
-        this.setState(latitude, longitude);
+        this.setState({isLoading:false,latitude:latitude, longitude:longitude});
 
       } catch (error) {
         Alert.alert("can't find you")
@@ -31,16 +32,17 @@ export default class extends React.Component {
     }
 
     componentDidMount(){
+      console.log("didMount");
       this.getLocation();
     }
 
     shouldComponentUpdate(){
+      console.log("ShouldMount");
       this.getLocation();
     }
 
     render(){
-      const { latitude, longitude} = this.state;
-      console.log(latitude, longitude);
+      const {latitude, longitude} = this.state;
       return <Navigator latitude={latitude} longitude={longitude} />
     }
 }
